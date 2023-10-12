@@ -20,10 +20,14 @@ int main()
 
 void nhap(int a[], int& n)
 {
+	cout << "nhap vao so phan tu cua mang: ";
 	cin >> n;
-	cout << "Nhap vao cac phan tu cua mang: ";
+	cout << "Nhap vao cac phan tu cua mang:\n";
 	for (int i = 0; i < n; i++)
+	{
+		cout << "a[" << i << "]: ";
 		cin >> a[i];
+	}
 }
 
 void sapxep(int a[], int n)

@@ -20,9 +20,12 @@ void nhap(int a[], int& n)
 {
 	cout << "nhap vao so luong phan tu cua mang: ";
 	cin >> n;
-	cout << "nhap cac phan tu cua mang: ";
+	cout << "nhap cac phan tu cua mang:\n";
 	for (int i = 0; i <= n - 1; i++)
+	{
+		cout << "a[" << i << "]: ";
 		cin >> a[i];
+	}
 }
 
 int tongcucdai(int a[], int n)

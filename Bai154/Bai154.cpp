@@ -18,9 +18,12 @@ void nhap(float a[], int& n)
 {
 	cout << "nhap vao so luong phan tu cua mang a: ";
 	cin >> n;
-	cout << "nhap vao cac phan tu cua mang a :";
+	cout << "nhap vao cac phan tu cua mang a:\n";
 	for (int i = 0; i < n; i++)
+	{
+		cout << "a[" << i << "]: ";
 		cin >> a[i];
+	}
 }
 
 void daomang(float a[], int n)

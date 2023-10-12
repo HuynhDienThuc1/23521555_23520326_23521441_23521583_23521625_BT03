@@ -20,9 +20,12 @@ void nhap(int a[], int& n)
 {
 	cout << "nhap so luong phan tu trong mang: ";
 	cin >> n;
-	cout << "nhap cac phan tu trong mang: ";
+	cout << "nhap cac phan tu trong mang:\n";
 	for (int i = 0; i <= n - 1; i++)
+	{
+		cout << "a[" << i << "]: ";
 		cin >> a[i];
+	}
 }
 
 bool kiemtra(int n)

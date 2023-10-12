@@ -19,9 +19,12 @@ void nhap(int a[], int& n)
 {
 	cout << "Nhap so luong phan tu trong mang: ";
 	cin >> n;
-	cout << "Nhap cac phan tu trong mang: ";
+	cout << "Nhap cac phan tu trong mang:\n";
 	for (int i = 0; i <= n - 1; i++)
+	{
+		cout << "a[" << i << "]: ";
 		cin >> a[i];
+	}
 }
 
 bool nguyento(int n)

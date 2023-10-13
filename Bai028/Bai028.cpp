@@ -2,43 +2,43 @@
 #include<cmath>
 #include<iomanip>
 using namespace std;
-void nhap(float[], int&);
-void xuat(float[], int);
-float duongdau(float[], int);
-float duongnhonhat(float[], int);
-void lietke(float[], int);
+
+void Nhap(float[], int&);
+void Xuat(float[], int);
+float DuongDau(float[], int);
+float DuongNhoNhat(float[], int);
+void LietKe(float[], int);
 
 int main()
 {
-	float a[500];
-	int n;
-	nhap(a, n);
-	cout << "Mang ban dau: ";
-	xuat(a, n);
-	cout << "Ket qua la: ";
-	lietke(a, n);
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	LietKe(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n)
+void Nhap(float a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]=";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
 }
 
-void xuat(float a[], int n)
+void Xuat(float a[], int n)
 {
-	for (int i = 0; i < n; i++)
-		cout << a[i] << " ";
-	cout << endl;
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
 }
 
-float duongdau(float a[], int n)
+float DuongDau(float a[], int n)
 {
 	for (int i = 0; i < n; i++)
 		if (a[i] > 0)
@@ -46,9 +46,9 @@ float duongdau(float a[], int n)
 	return -1;
 }
 
-float duongnhonhat(float a[], int n)
+float DuongNhoNhat(float a[], int n)
 {
-	float lc = duongdau(a, n);
+	float lc = DuongDau(a, n);
 	if (lc == -1)
 		return -1;
 	for (int i = 0; i < n; i++)
@@ -57,15 +57,17 @@ float duongnhonhat(float a[], int n)
 	return lc;
 }
 
-void lietke(float a[], int n)
+void LietKe(float a[], int n)
 {
-	float dd = duongnhonhat(a, n);
+	float dd = DuongNhoNhat(a, n);
 	if (dd == -1)
 	{
 		cout << "Khong co gia tri duong ";
 		return;
 	}
+	cout << "\nCac vi tri co gia tri bang gia tri duong nho nhat: ";
 	for (int i = 0; i < n; i++)
 		if (a[i] == dd)
-			cout << i<<" ";
+			cout << setw(10) << i;
 }
+

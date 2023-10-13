@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 void Nhap(int[], int&);
@@ -17,9 +16,8 @@ int main()
 	cout << "\nMang ban dau:\n";
 	Xuat(b, k);
 
-	int kq = TimGiaTri(b, k);
-	if (kq != 0)
-		cout << "\nGia tri dau tien trong mang co dang 2^m: " << kq;
+	if (TimGiaTri(b, k) != 0)
+		cout << "\nGia tri dau tien trong mang co dang 2^m: " << TimGiaTri(b, k);
 	else
 		cout << "\nMang khong co gia tri dang 2^m";
 	return 0;

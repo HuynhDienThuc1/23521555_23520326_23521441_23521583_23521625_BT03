@@ -1,5 +1,6 @@
-?#include <iostream>
+#include <iostream>
 #include<iomanip>
+#include<cmath>
 using namespace std;
 void Nhap(float[], int&);
 void LietKe(float[], int);

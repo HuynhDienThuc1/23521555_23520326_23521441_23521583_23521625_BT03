@@ -2,44 +2,46 @@
 #include<cmath>
 #include<iomanip>
 using namespace std;
-void nhap(float[], int&);
-void xuat(float[], int);
-void xaydung(float[], int, float[]);
+
+void Nhap(float[], int&);
+void Xuat(float[], int);
+void XayDung(float[], int, float[]);
 
 int main()
 {
-	float a[500];
-	float b[500];
-	int n;
+	float b[100];
 	int k;
-	nhap(a, n);
-	cout << "Mang ban dau la: ";
-	xuat(a, n);
-	cout << "Mang b la: ";
-	xaydung(a, n, b);
-	xuat(b, n);
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	float c[100];
+	XayDung(b, k, c);
+
+	cout << "\nMang sau khi xu ly: ";
+	Xuat(c, k);
+
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n)
+void Nhap(float a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]=";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
 
-void xuat(float a[], int n)
+void Xuat(float a[], int n)
 {
-	for (int i = 0; i < n; i++)
-		cout << a[i] << " ";
-	cout << endl;
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
-void xaydung(float a[], int n, float b[])
+void XayDung(float a[], int n, float b[])
 {
 	if (n == 1)
 	{

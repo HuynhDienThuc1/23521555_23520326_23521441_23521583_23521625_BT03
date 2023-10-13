@@ -15,9 +15,8 @@ int main()
 	cout << "\nMang ban dau:\n";
 	Xuat(b, k);
 
-	int kq = ChanDau(b, k);
-	if (kq != -1)
-		cout << "\nSo chan dau tien: " << kq;
+	if (ChanDau(b, k) != -1)
+		cout << "\nSo chan dau tien: " << ChanDau(b, k);
 	else
 		cout << "\nMang khong co gia tri chan.";
 	return 0;

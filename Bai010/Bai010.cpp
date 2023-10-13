@@ -1,27 +1,33 @@
 #include <iostream>
 #include <iomanip>
-void nhap(int[], int&);
+using namespace std;
+
+void Nhap(int[], int&);
+void Xuat(int[], int);
 bool ktToanLe(int);
 void LietKe(int[], int);
-using namespace std;
+
 int main()
 {
-	int n;
-	int a[500];
-	nhap(a, n);
-	LietKe(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	LietKe(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
-	cout << "nhap n:";
+	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n ; i++)
-	{
-		cout << "Nhap a[" << i << "]:";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
 
 bool ktToanLe(int n)
@@ -42,8 +48,14 @@ bool ktToanLe(int n)
 
 void LietKe(int a[], int n)
 {
-	cout << "cac so toan le la:";
+	cout << "\nCac so toan le la:";
 	for (int i = 0; i < n; i++)
 		if (ktToanLe(a[i]))
 			cout << setw(8) << a[i];
+}
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }

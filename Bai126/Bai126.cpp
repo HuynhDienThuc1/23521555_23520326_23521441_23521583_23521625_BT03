@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 void Nhap(int[], int&);
@@ -16,8 +15,7 @@ int main()
 	cout << "\nMang ban dau: ";
 	Xuat(b, k);
 
-	int kq = ktGiam(b, k);
-	if (kq != 0)
+	if (ktGiam(b, k) != 0)
 		cout << "Mang giam dan.";
 	else
 		cout << "Mang khong giam.";

@@ -8,19 +8,20 @@ void XayDung(float[], int, float[], int&);
 
 int main()
 {
-	float A[500], B[500];
-	int n, k;
+	float b[100];
+	int k;
+	Nhap(b, k);
 
-	Nhap(A, n);
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
 
-	cout << "\nXuat mang ban dau: ";
-	Xuat(A, n);
+	float c[100];
+	int l;
+	XayDung(b, k, c, l);
 
-	XayDung(A, n, B, k);
-
-	cout << "\nXuat mang chua gia tri am: ";
-	Xuat(B, k);
-
+	cout << "\nMang chua cac gia tri am: ";
+	Xuat(c, l);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -28,17 +29,15 @@ void Nhap(float a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "Nhap a[" << i << "]: ";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100.0 + (rand() / (RAND_MAX / (100.0 - (-100.0))));
 }
 
 void Xuat(float a[], int n)
 {
 	for (int i = 0; i <= n - 1; i++)
-		cout << setw(10) << a[i];
+		cout << fixed << setw(10) << setprecision(3) << a[i];
 }
 
 void XayDung(float a[], int n, float b[], int& k)

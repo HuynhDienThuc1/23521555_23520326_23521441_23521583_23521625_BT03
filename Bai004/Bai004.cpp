@@ -4,20 +4,22 @@
 #include<string>
 using namespace std;
 
-void nhap(string, float[], int&);
-void xuat(float[], int);
+void Nhap(string, float[], int&);
+void Xuat(float[], int);
 
 int main()
 {
-	float a[500];
-	int n;
-	nhap("intmatrandata01.inp", a, n);
-	cout << "Mang ban dau ";
-	xuat(a, n);
+	float b[100];
+	int k;
+	Nhap("floatdata01.inp", b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(string filename, float a[], int& n)
+void Nhap(string filename, float a[], int& n)
 {
 	ifstream fi(filename);
 	fi >> n;
@@ -25,9 +27,8 @@ void nhap(string filename, float a[], int& n)
 		fi >> a[i];
 }
 
-void xuat(float a[], int n)
+void Xuat(float a[], int n)
 {
-	cout << n << endl;
 	for (int i = 0; i <= n - 1; i++)
-		cout << setw(10) << a[i];
+		cout << fixed << setw(10) << setprecision(3) << a[i];
 }

@@ -3,44 +3,60 @@
 using namespace std;
 
 void Nhap(int[], int&);
+void Xuat(int[], int);
 int TanSuat(int[], int, int);
 int ktThuoc(int[], int, int[], int);
 
 int main()
 {
-	int n;
-	int a[500];
-	int b[500];
-	int m;
-	Nhap(a, n);
-	cout << endl;
-	Nhap(b, m);
-	ktThuoc(a, n, b, m);
-	cout << "Ket qua: " << ktThuoc(a, n, b, m);
+	int k;
+	int c[100];
+	Nhap(c, k);
+	cout << "\nMang a ban dau: \n";	
+	Xuat(c, k);
+
+	int f;
+	int e[100];
+	Nhap(e, f);
+	cout << "\nMang b ban dau: \n";
+	Xuat(e, f);
+
+	if (ktThuoc(c, k, e, f))
+		cout << "\nTat ca phan tu mang a nam trong mang b.";
+	else
+		cout << "\nTat ca phan tu mang a ko nam trong mang b.";
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
+
 void Nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]: ";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
+}
+
 int TanSuat(int a[], int n, int x)
 {
 	int dem = 0;
-	for (int i = 0; i < n; i++)
+	for (int i = 0;i < n;i++)
 		if (a[i] == x)
 			dem++;
 	return dem;
 }
+
 int ktThuoc(int a[], int n, int b[], int m)
 {
 	int flag = 1;
-	for (int i = 0; i < n; i++)
+	for (int i = 0;i < n;i++)
 		if (TanSuat(b, m, a[i]) == 0)
 			flag = 0;
 	return flag;

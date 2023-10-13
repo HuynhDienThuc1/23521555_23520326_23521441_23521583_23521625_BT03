@@ -1,28 +1,44 @@
 #include <iostream>
 #include <iomanip>
-void nhap(float[], int&);
-float CuoiCung(float[], int);
 using namespace std;
+
+void Nhap(float[], int&);
+void Xuat(float[], int);
+float CuoiCung(float[], int);
 
 int main()
 {
-	int n;
-	float a[100];
-	nhap(a, n);
-	cout << "gia tri am cuoi cung lon hon -1 la:" << CuoiCung(a, n);
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	float dd = CuoiCung(b, k);
+	if (dd == 0)
+		cout << "\nKhong co gia tri nao thoa dieu kien";
+	else
+		cout << "\nGia tri thoa dieu kien:" << dd;
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n)
+void Nhap(float a[], int& n)
 {
-	cout << "nhap so luong chu so cua mang:";
+	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
 }
+
+void Xuat(float a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
+}
+
 
 float CuoiCung(float a[], int n)
 {

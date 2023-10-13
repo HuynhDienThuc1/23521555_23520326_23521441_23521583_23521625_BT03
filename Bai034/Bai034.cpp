@@ -1,17 +1,23 @@
-#include <iostream>
-#include <iomanip>
+#include<iostream>
+#include<cmath>
+#include<iomanip>
 using namespace std;
 
 void Nhap(float[], int&);
-float ktHoanThien(float[], int);
+void Xuat(float[], int);
+float TongDuong(float[], int);
 
 int main()
 {
-	float A[30];
-	int n;
-	Nhap(A, n);
-	cout << "Tong cac so duong la: " << ktHoanThien(A, n);
+	float b[100];
+	int k;
+	Nhap(b, k);
 
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	cout << "\nTong cac gia tri duong: " << TongDuong(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -19,14 +25,18 @@ void Nhap(float a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "Nhap a[" << i << "]: ";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
 }
 
-float ktHoanThien(float a[], int n)
+void Xuat(float a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
+}
+
+float TongDuong(float a[], int n)
 {
 	float s = 0;
 	for (int i = 0; i <= n - 1; i++)

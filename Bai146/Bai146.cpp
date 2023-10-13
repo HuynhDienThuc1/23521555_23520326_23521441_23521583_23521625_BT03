@@ -2,56 +2,62 @@
 #include<cmath>
 #include<iomanip>
 using namespace std;
-void nhap(int[], int&);
-void xuat(int[], int);
-void tron(int[], int, int[], int, int[], int&);
+
+void Nhap(int[], int&);
+void Xuat(int[], int);
+void Tron(int[], int, int[], int, int[], int&);
 
 int main()
 {
-	int a[500];
-	int b[500];
-	int c[500];
-	int n, m, p;
-	nhap(a, n);
-	nhap(b, m);
-	cout << "Mang a la: ";
-	xuat(a, n);
-	cout << "Mang b la: ";
-	xuat(b, m);
-	cout << "Ket qua la: ";
-	tron(a, n, b, m, c, p);
-	xuat(c, p);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	int c[100];
+	int l;
+	Nhap(c, l);
+
+	cout << "\nMang ban dau: ";
+	Xuat(c, l);
+
+	int d[100];
+	int j;
+	Tron(b, k, c, l, d, j);
+
+	cout << "Mang sau xu ly ";
+	Xuat(d, j);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
-	cout << "Nhap so phan tu cua mang: ";
+	cout << "\nNhap n: "; 
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]=";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
 
-void xuat(int a[], int n)
+void Xuat(int a[], int n)
 {
-	for (int i = 0; i < n; i++)
-		cout << a[i] << " ";
-	cout << endl;
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i] << endl;
 }
 
-void tron(int a[], int n, int b[], int m, int c[], int& p)
+void Tron(int aa[], int n, int bb[], int m, int cc[], int& p)
 {
 	int i = 0;
 	int j = 0;
 	p = 0;
 	while (!(i >= n && j >= m))
 	{
-		if ((i < n && j < m && a[i] < b[j]) || (j > m))
-			c[p++] = a[i++];
+		if ((i < n && j < m && aa[i] < bb[j]) || (j > m))
+			cc[p++] = aa[i++];
 		else
-			c[p++] = b[j++];
+			cc[p++] = bb[j++];
 	}
 }

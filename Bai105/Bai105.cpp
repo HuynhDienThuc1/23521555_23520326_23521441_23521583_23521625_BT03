@@ -1,28 +1,43 @@
-
 #include <iostream>
-#include <cmath>
-
+#include <iomanip>
 using namespace std;
 
 void Nhap(int[], int&);
+void Xuat(int[], int);
 bool ktToanLe(int);
 int ToanLeDauTien(int[], int);
 int TimGiaTri(int[], int);
 
 int main()
 {
-	int n;
 	int a[500];
+	int n;
+
 	Nhap(a, n);
-	ToanLeDauTien(a, n);
-	cout << TimGiaTri(a, n);
+
+	cout << "\nXuat mang mot chieu: ";
+	Xuat(a, n);
+	cout << "\nGia tri le lon nhat la: ";
+	TimGiaTri(a, n);
+	cout << "\n\n\n Ket thuc!!!";
+
 	return 0;
 }
+
 void Nhap(int a[], int& n)
 {
+	cout << "Nhap n : ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-		cin >> a[i];
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
+}
+
+void Xuat(int a[], int n)
+{
+	cout << n << endl;
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 bool ktToanLe(int n)
 {

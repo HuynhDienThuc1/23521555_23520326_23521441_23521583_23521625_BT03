@@ -3,67 +3,68 @@
 #include<iomanip>
 using namespace std;
 
-void nhap(float[], int&);
-void xuat(float[], int);
-float tonggiatri(float[], int, float);
-int demgiatri(float[], int, float);
-float trungbinhcong(float[], int, float);
+void Nhap(float[], int&);
+void Xuat(float[], int);
+float TongGiaTri(float[], int, float);
+int DemGiaTri(float[], int, float);
+float TrungBinhCong(float[], int, float);
 
 int main()
 {
-	float a[500];
-	int n;
-	float x;
-	cout << "Nhap gia tri cua x: ";
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	int x;
+	cout << "\nNhap x:";
 	cin >> x;
-	nhap(a, n);
-	cout << "Mang ban dau: ";
-	xuat(a, n);
-	cout << "Ket qua la: ";
-	cout << trungbinhcong(a, n, x);
+
+	cout << "\nTrung binh cong cac gia tri thoa dieu kien: " << TrungBinhCong(b, k, x);
+
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n)
+void Nhap(float a[], int& n)
 {
-	cout << "Nhap gia tri n: ";
+	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]=";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
 }
 
-void xuat(float a[], int n)
+void Xuat(float a[], int n)
 {
-	for (int i = 0; i < n; i++)
-		cout << a[i] << " ";
-	cout << endl;
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
 }
 
-float tonggiatri(float a[], int n, float x)
+float TongGiaTri(float a[], int n, float xx)
 {
 	float s = 0;
 	for (int i = 0; i < n; i++)
-		if (a[i] > x)
+		if (a[i] > xx)
 			s = s + a[i];
 	return s;
 }
 
-int demgiatri(float a[], int n, float x)
+int DemGiaTri(float a[], int n, float xx)
 {
 	int dem = 0;
 	for (int i = 0; i < n; i++)
-		if (a[i] > x)
+		if (a[i] > xx)
 			dem++;
 	return dem;
 }
 
-float trungbinhcong(float a[], int n, float x)
+float TrungBinhCong(float a[], int n, float xx)
 {
-	float s = tonggiatri(a, n, x);
-	int dem = demgiatri(a, n, x);
+	float s = TongGiaTri(a, n, xx);
+	int dem = DemGiaTri(a, n, xx);
 	if (dem == 0)
 		return 0;
 	return s / dem;

@@ -3,42 +3,42 @@
 #include<iomanip>
 using namespace std;
 
-void nhap(float[], int&);
-void xuat(float[], int);
-float lonnhat(float[], int);
-int demlonnhat(float[], int);
+void Nhap(float[], int&);
+void Xuat(float[], int);
+float LonNhat(float[], int);
+int DemLonNhat(float[], int);
 
 int main()
 {
-	float a[500];
-	int n;
-	nhap(a, n);
-	cout << "Mang ban dau la: ";
-	xuat(a, n);
-	cout << "Ket qua la: ";
-	cout << (demlonnhat(a, n));
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	cout << "\nSo luong gia tri thoa dieu kien: " << DemLonNhat(b, k);
+
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n)
+void Nhap(float a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]=";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
 }
 
-void xuat(float a[], int n)
+void Xuat(float a[], int n)
 {
-	for (int i = 0; i < n; i++)
-		cout << a[i] << " ";
-	cout << endl;
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
-float lonnhat(float a[], int n)
+float LonNhat(float a[], int n)
 {
 	float lc = a[0];
 	for (int i = 0; i < n; i++)
@@ -47,9 +47,9 @@ float lonnhat(float a[], int n)
 	return lc;
 }
 
-int demlonnhat(float a[], int n)
+int DemLonNhat(float a[], int n)
 {
-	float ln = lonnhat(a, n);
+	float ln = LonNhat(a, n);
 	int dem = 0;
 	for (int i = 0; i < n; i++)
 		if (a[i] == ln)

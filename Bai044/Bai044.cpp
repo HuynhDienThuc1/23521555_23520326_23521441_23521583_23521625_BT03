@@ -1,34 +1,44 @@
 #include <iostream>
+#include <cmath>
+#include <iomanip>
 using namespace std;
 
-void nhap(int[], int&);
-int tongcuctieu(int[], int);
-int tongcucdai(int[], int);
-int tongcuctri(int[], int);
-void xuat(int[], int);
+void Nhap(int[], int&);
+void Xuat(int[], int);
+int TongCucTri(int[], int);
+int TongCucTieu(int[], int);
+int TongCucDai(int[], int);
 
 int main()
 {
-	int n;
-	int a[500];
-	nhap(a, n);
-	xuat(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	cout << "\nTong cac gia tri thoa dieu kien: " << TongCucTri(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
-	cout << "nhap vao so luong phan tu cua mang: ";
+	cout << "Nhap n: ";
 	cin >> n;
-	cout << "nhap cac phan tu cua mang:\n";
+	srand(time(NULL));
 	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "a[" << i << "]: ";
-		cin >> a[i];
-	}
+		a[i] = rand() % (200 + 1) - 100;
 }
 
-int tongcucdai(int a[], int n)
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
+}
+
+int TongCucDai(int a[], int n)
 {
 	if (n <= 1)
 		return 0;
@@ -36,38 +46,31 @@ int tongcucdai(int a[], int n)
 	if (a[0] > a[1])
 		s += a[0];
 	for (int i = 1; i <= n - 1; i++)
-	{
 		if (a[i - 1] < a[i] && a[i] > a[i + 1])
 			s += a[i];
-	}
 	if (a[n - 2] < a[n - 1])
 		s += a[n - 1];
 	return s;
 }
 
-int tongcuctieu(int a[], int n)
+int TongCucTieu(int a[], int n)
 {
 	if (n <= 1)
 		return 0;
 	int s = 0;
 	if (a[0] < a[1])
 		s += a[0];
-	for (int i = 1; i <= n - 1; i++)
-	{
+	for (int i = 1; i <= n - 2; i++)
 		if (a[i - 1] > a[i] && a[i] < a[i + 1])
 			s += a[i];
-	}
 	if (a[n - 2] > a[n - 1])
 		s += a[n - 1];
 	return s;
 }
 
-int tongcuctri(int a[], int n)
+int TongCucTri(int a[], int n)
 {
-	return tongcucdai(a, n) + tongcuctieu(a, n);
-}
-
-void xuat(int a[], int n)
-{
-	cout << "tong cac gia tri cuc tri la:" << tongcuctri(a, n);
+	int s1 = TongCucDai(a, n);
+	int s2 = TongCucTieu(a, n);
+	return (s1 + s2);
 }

@@ -1,31 +1,42 @@
 #include <iostream>
 #include <iomanip>
-void nhap(int[], int&);
+void Nhap(int[], int&);
 void XoaViTri(int[], int&,int);
 bool ktNguyenTo(int);
 void XoaNguyenTo(int[], int&);
-void xuat(int[], int);
+void Xuat(int[], int);
 using namespace std;
 
 int main()
 {
-	int n,k;
-	int a[100];
-	nhap(a, n);
-	XoaNguyenTo(a, n);
-	xuat(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nXuat mang mot chieu: " << endl;
+	Xuat(b, k);
+
+	XoaNguyenTo(b, k);
+
+	cout << "\nMang sau khi xoa nguyen to: " << endl;
+	Xuat(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
-	cout << "nhap so luong chu so cua mang:";
+	cout << "Nhap n: ";
 	cin >> n;
+	srand(time(NULL));
 	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+		a[i] = rand() % (200 + 1) - 100;
+}
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
 void XoaViTri(int a[], int& n, int k)
@@ -52,13 +63,4 @@ void XoaNguyenTo(int a[], int& n)
 	for (int i = n - 1; i >= 0; i--)
 		if (ktNguyenTo(a[i]))
 			XoaViTri(a, n, i);
-}
-
-void xuat(int a[], int n)
-{
-	cout << "mang sau sap xep la:";
-	for (int i = 0; i < n; i++)
-	{
-		cout << " a[" << i << "]:" << a[i] << setw(4);
-	}
 }

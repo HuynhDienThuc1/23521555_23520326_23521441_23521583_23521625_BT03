@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 void Nhap(float[], int&);
@@ -22,10 +21,10 @@ int main()
 	Xuat(b, k);
 
 	float y;
-	cout << "\nNhap gia tri muon them vao: ";
+	cout << "\nNhap y: ";
 	cin >> y;
 
-	cout << "\nMang sau khi duoc them 1 gia tri: \n";
+	cout << "\nMang sau khi duoc them gia tri " << y << " la: ";
 	ThemBaoToan(b, k, y);
 	Xuat(b, k);
 	return 0;

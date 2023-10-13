@@ -2,45 +2,46 @@
 #include<cmath>
 #include<iomanip>
 using namespace std;
-void nhap(int[], int&);
-void xuat(int[], int);
-void daomang(int[], int);
-void daochan(int[], int);
-void daole(int[], int);
-void daochanle(int[], int);
+
+void Nhap(int[], int&);
+void Xuat(int[], int);
+void DaoMang(int[], int);
+void DaoChan(int[], int);
+void DaoLe(int[], int);
+void DaoChanle(int[], int);
 
 int main()
 {
-	int a[500];
-	int n;
-	nhap(a, n);
-	cout << "Mang ban dau la: ";
-	xuat(a, n);
-	cout << "Mang sau khi tron la: ";
-	daochanle(a, n);
-	xuat(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	DaoChanle(b, k);
+	cout << "\nMang sau khi dao: ";
+	Xuat(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
-	cout << "Nhap so phan tu cua mang: ";
+	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]=";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
 
-void xuat(int a[], int n)
+void Xuat(int a[], int n)
 {
-	for (int i = 0; i < n; i++)
-		cout << a[i] << " ";
-	cout << endl;
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
-void daomang(int a[], int n)
+void DaoMang(int a[], int n)
 {
 	int d = 0;
 	int c = n - 1;
@@ -54,36 +55,37 @@ void daomang(int a[], int n)
 	}
 }
 
-void daochan(int a[], int n)
+void DaoChan(int a[], int n)
 {
 	int b[500];
 	int k = 0;
 	for (int i = 0; i < n; i++)
 		if (a[i] % 2 == 0)
 			b[k++] = a[i];
-	daomang(b, k);
+	DaoMang(b, k);
 	k = 0;
 	for (int i = 0; i < n; i++)
 		if (a[i] % 2 == 0)
 			a[i] = b[k++];
 }
 
-void daole(int a[], int n)
+void DaoLe(int a[], int n)
 {
 	int b[500];
 	int k = 0;
 	for (int i = 0; i < n; i++)
 		if (a[i] % 2 != 0)
 			b[k++] = a[i];
-	daomang(b, k);
+	DaoMang(b, k);
 	k = 0;
 	for (int i = 0; i < n; i++)
 		if (a[i] % 2 != 0)
 			a[i] = b[k++];
 }
 
-void daochanle(int a[], int n)
+void DaoChanle(int a[], int n)
 {
-	daochan(a, n);
-	daole(a, n);
+	DaoChan(a, n);
+	DaoLe(a, n);
 }
+

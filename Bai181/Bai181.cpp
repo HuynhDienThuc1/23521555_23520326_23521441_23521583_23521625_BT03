@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 void Nhap(int[], int&);
@@ -17,9 +16,7 @@ int main()
 	cout << "\nMang ban dau: ";
 	Xuat(b, k);
 
-	int kq = DemConGiam(b, k);
-	cout << "So luong mang con giam la: " << kq;
-
+	cout << "So luong mang con giam la: " << DemConGiam(b, k);
 	return 0;
 }
 

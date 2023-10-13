@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 void Nhap(float[], int&);
@@ -14,11 +13,11 @@ int main()
 	int k;
 	Nhap(b, k);
 
-	cout << "\nMang b: ";
+	cout << "\nMang ban dau: ";
 	Xuat(b, k);
 
-	cout << "\nXay dung cac gia tri trong mang tang dan: \n";
 	SapTang(b, k);
+	cout << "\nXay dung cac gia tri trong mang tang dan: \n";
 	Xuat(b, k);
 	return 0;
 }

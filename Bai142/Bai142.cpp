@@ -1,37 +1,47 @@
 #include <iostream>
 #include <iomanip>
-void nhap(float[], int&);
-void HoanVi(float&, float&);
-void DuongTang(float[], int);
-void xuat(float[], int);
 using namespace std;
+
+void Nhap(float[], int&);
+void Xuat(float[], int);
+void DuongTang(float[], int);
 
 int main()
 {
-	int n;
-	float a[100];
-	nhap(a, n);
-	DuongTang(a, n);
-	xuat(a, n);
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	DuongTang(b, k);
+	cout << "\Mang sau sap xep: " << endl;
+	Xuat(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n)
+void Nhap(float a[], int& n)
 {
-	cout << "nhap so luong chu so cua mang:";
+	cout << "Nhap n: ";
 	cin >> n;
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
+}
+
+void Xuat(float a[], int n)
+{
 	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+		cout << fixed << setw(10) << setprecision(3) << a[i];
 }
 
 void HoanVi(float& a, float& b)
 {
-	a = a + b;
-	b = a - b;
-	a = a - b;
+	float temp = a;
+	a = b;
+	b = temp;
 }
 
 void DuongTang(float a[], int n)
@@ -40,13 +50,4 @@ void DuongTang(float a[], int n)
 		for (int j = i + 1; j <= n - 1; j++)
 			if (a[i] > 0 && a[j] > 0 && a[i] > a[j])
 				HoanVi(a[i], a[j]);
-}
-
-void xuat(float a[], int n)
-{
-	cout << "mang sau hoan vi la:";
-	for (int i = 0; i < n; i++)
-	{
-		cout << " a[" << i << "]:" << a[i] << setw(4);
-	}
 }

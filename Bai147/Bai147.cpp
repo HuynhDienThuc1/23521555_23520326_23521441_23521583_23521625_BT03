@@ -1,24 +1,32 @@
 #include <iostream>
-#include <cstdlib>
 #include <iomanip>
 using namespace std;
 
 void Nhap(int[], int&);
+void Xuat(int[], int);
 void Tron(int[], int, int[], int, int[], int&);
+void Xuat(int[], int);
 
 int main()
 {
-	int a[100];
 	int b[100];
-	int c[500];
-	int n, m, p;
-	cout << "Nhap mang a: " << endl;
-	Nhap(a, n);
-	cout << "Nhap mang b: " << endl;
-	Nhap(b, m);
-	Tron(a, n, b, m, c, p);
-	//for (int i = 0; i < p; i++)
-		//cout << setw(4) << c[i];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	int c[100];
+	int l;
+	Nhap(c, l);
+
+	int d[100];
+	int j;
+	Tron(b, k, c, l, d, j);
+
+	cout << "Mang sau xu ly ";
+	Xuat(d, j);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -26,27 +34,31 @@ void Nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	//srand(time(NULL));
-	cout << "Nhap mang: ";
-	for (int i = 0; i < n; i++)
-		cin >> a[i];
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
+}
+
 void Tron(int a[], int n, int b[], int m, int c[], int& p)
 {
-	int i = 0;
-	int j = 0;
+	int i = n-1;
+	int j = m-1;
 	p = 0;
-	while (i < n || j < m)
+	while (i >= 0 || j >= 0)
 	{
-		if ((a[i] < b[j] && i < n && j < m) || j >= m)
+		if ((a[i] > b[j] && i >= 0 && j >= 0) || j < 0)
 		{
-			c[p++] = a[i++];
-			cout << c[p - 1] << endl;
+			c[p++] = a[i--];
 		}
 		else
 		{
-			c[p++] = b[j++];
-			cout << c[p - 1] << endl;
+			c[p++] = b[j--];
 		}
 	}
 }

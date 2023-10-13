@@ -11,19 +11,17 @@ void ChanTangLeTang(int[], int);
 
 int main()
 {
-	int A[500];
-	int n;
+	int b[100];
+	int k;
+	Nhap(b, k);
 
-	Nhap(A, n);
-
-	cout << "\nXuat mang ban dau: " << endl;
-	Xuat(A, n);
-
-	ChanTangLeTang(A, n);
-
-	cout << "\nMang sau khi sap xep: " << endl;
-	Xuat(A, n);
-
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+	
+	ChanTangLeTang(b, k);
+	cout << "\nMang sau xu ly: ";
+	Xuat(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -31,17 +29,15 @@ void Nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
+	srand(time(NULL));
 	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "Nhap a[" << i << "]: ";
-		cin >> a[i];
-	}
+		a[i] = rand() % (200 + 1) - 100;
 }
 
 void Xuat(int a[], int n)
 {
 	for (int i = 0; i <= n - 1; i++)
-		cout << setw(5) << a[i];
+		cout << setw(10) << a[i];
 }
 
 void HoanVi(int& x, int& y)

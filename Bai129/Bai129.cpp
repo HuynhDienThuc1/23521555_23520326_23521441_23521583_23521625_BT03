@@ -2,30 +2,43 @@
 #include<iomanip>
 #include<cmath>
 using namespace std;
+
 void Nhap(int[], int&);
+void Xuat(int[], int);
 int KiemTraSong(int[], int);
+
 int main()
 {
-	int n;
-	int a[500];
-	Nhap(a, n);
-	if (KiemTraSong(a, n))
-		cout << "Co dang song";
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	if (KiemTraSong(b, k))
+		cout << "\nMang co dang song";
 	else
-		cout << "Khong co dang song";
+		cout << "\nMang khong co dang song";
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
+
 void Nhap(int a[], int& n)
 {
-	cout << "Nhap n:";
+	cout << "Nhap n: ";
 	cin >> n;
-	cout << "Nhap cac phan tu trong mang:" << endl;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "A[" << i << "] =";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
+}
+
 int KiemTraSong(int a[], int n)
 {
 	if (n <= 1)
@@ -41,3 +54,4 @@ int KiemTraSong(int a[], int n)
 			flag = 0;
 	return flag;
 }
+

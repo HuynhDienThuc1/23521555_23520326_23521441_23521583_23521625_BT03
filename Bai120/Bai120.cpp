@@ -1,28 +1,41 @@
 #include <iostream>
 #include <iomanip>
-void nhap(int[], int&);
+using namespace std;
+
+void Nhap(int[], int&);
+void Xuat(int[], int);
 bool ktNguyenTo(int);
 int ktTonTai(int[], int);
-using namespace std;
 
 int main()
 {
-	int n;
-	int a[100];
-	nhap(a, n);
-	cout << ktTonTai(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	if (ktTonTai(b, k) == 0)
+		cout << "\nKhong ton tai so nguyen to";
+	else
+		cout << "\nCo ton tai so nguyen to";
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
-
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
-	cout << "nhap so luong chu so cua mang:";
+	cout << "Nhap n: ";
 	cin >> n;
+	srand(time(NULL));
 	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+		a[i] = rand() % (200 + 1) - 100;
+}
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
 bool ktNguyenTo(int k)

@@ -1,29 +1,44 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-void nhap(float[], int&);
-void daomang(float[], int);
-void xuat(float[], int);
+void Nhap(float[], int&);
+void Xuat(float[], int);
+void DaoMang(float[], int);
 
 int main()
 {
-	int n;
-	float a[500];
-	nhap(a, n);
-	xuat(a, n);
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	DaoMang(b, k);
+	cout << "\nMang sau xu ly: ";
+	Xuat(b, k);
+
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n)
+void Nhap(float a[], int& n)
 {
-	cout << "nhap vao so luong phan tu cua mang a: ";
+	cout << "Nhap n: ";
 	cin >> n;
-	cout << "nhap vao cac phan tu cua mang a :";
-	for (int i = 0; i < n; i++)
-		cin >> a[i];
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
 }
 
-void daomang(float a[], int n)
+void Xuat(float a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
+}
+
+void DaoMang(float a[], int n)
 {
 	int d = 0;
 	int c = n - 1;
@@ -35,12 +50,4 @@ void daomang(float a[], int n)
 		d++;
 		c--;
 	}
-}
-
-void xuat(float a[], int n)
-{
-	daomang(a, n);
-	cout << "mang a sau khi duoc dao la: ";
-	for (int i = 0; i < n; i++)
-		cout << a[i] << " ";
 }

@@ -1,27 +1,38 @@
 #include <iostream>
 #include <iomanip>
-void nhap(int[], int&);
-int DemGiaTri(int[], int);
 using namespace std;
+
+void Nhap(int[], int&);
+void Xuat(int[], int);
+int DemGiaTri(int[], int);
 
 int main()
 {
-	int n;
-	int a[100];
-	nhap(a, n);
-	cout << "so luong gia tri lon hon tat ca gia tri truoc no la:" << DemGiaTri(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: \n";
+	Xuat(b, k);
+
+	cout << "\nSo luong gia tri thoa dieu kien la: " << DemGiaTri(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
-	cout << "nhap so luong chu so cua mang:";
+	cout << "Nhap n: ";
 	cin >> n;
+	srand(time(NULL));
 	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+		a[i] = rand() % (200 + 1) - 100;
+}
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
 int DemGiaTri(int a[], int n)

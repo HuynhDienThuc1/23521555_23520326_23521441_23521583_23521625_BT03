@@ -9,19 +9,17 @@ void DaoChan(int[], int);
 
 int main()
 {
-	int A[500];
-	int n;
+	int b[100];
+	int k;
+	Nhap(b, k);
 
-	Nhap(A, n);
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
 
-	cout << "\nXuat mang ban dau: " << endl;
-	Xuat(A, n);
-
-	DaoChan(A, n);
-
-	cout << "\nMang sau khi sap xep: " << endl;
-	Xuat(A, n);
-
+	DaoChan(b, k);
+	cout << "\nMang sau xu ly: ";
+	Xuat(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -29,19 +27,16 @@ void Nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
+	srand(time(NULL));
 	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "Nhap a[" << i << "]: ";
-		cin >> a[i];
-	}
+		a[i] = rand() % (200 + 1) - 100;
 }
 
 void Xuat(int a[], int n)
 {
 	for (int i = 0; i <= n - 1; i++)
-		cout << setw(5) << a[i];
+		cout << setw(10) << a[i];
 }
-
 
 void DaoMang(int a[], int n)
 {
@@ -59,14 +54,13 @@ void DaoMang(int a[], int n)
 
 void DaoChan(int a[], int n)
 {
-	int b[30];
-	int k = 0;
+	int b[100];
+	int k;
+	k = 0;
 	for (int i = 0; i <= n - 1; i++)
 		if (a[i] % 2 == 0)
 			b[k++] = a[i];
-
 	DaoMang(b, k);
-
 	k = 0;
 	for (int i = 0; i <= n - 1; i++)
 		if (a[i] % 2 == 0)

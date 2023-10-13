@@ -1,57 +1,76 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-void nhap(int[], int&);
-void sapxep(int[], int);
-int kthoanvi(int[], int, int[], int);
-void xuat(int[], int, int[], int);
+void Nhap(int[], int&);
+void Xuat(int[], int);
+void XuatHoanVi(int[], int, int[], int);
+void SapTang(int[], int);
+int ktHoanVi(int[], int, int[], int);
 
 int main()
 {
-	int n, k;
-	int a[500], b[500];
-	cout << "nhap vao so phan tu cua mang a: ";
-	nhap(a, n);
-	cout << "nhap vao so phan tu cua mang b: ";
-	nhap(b, k);
-	xuat(a, n, b, k);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang a ban dau:";
+	Xuat(b, k);
+
+	int c[100];
+	int l;
+	Nhap(c, l);
+
+	cout << "\nMang b ban dau: ";
+	Xuat(c, l);
+
+	cout << "\nKet qua sau khi kiem tra hai mang: ";
+	XuatHoanVi(b, k, c, l);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
+	cout << "Nhap n: ";
 	cin >> n;
-	cout << "Nhap vao cac phan tu cua mang: ";
-	for (int i = 0; i < n; i++)
-		cin >> a[i];
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
 
-void sapxep(int a[], int n)
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
+}
+
+void XuatHoanVi(int a[], int n, int b[], int m)
+{
+	int lc = ktHoanVi(a, n, b, m);
+	if (lc == 0)
+		cout << "Hai mang khong phai la hoan vi cua nhau";
+	else
+		cout << "Hai mang la hoan vi cua nhau";
+}
+
+void SapTang(int a[], int n)
 {
 	for (int i = 0; i < n - 1; i++)
-		for (int j = i + 1; j < n; j++)
+		for (int j = i + 1; j <= n - 1; j++)
 			if (a[i] > a[j])
 				swap(a[i], a[j]);
 }
 
-int kthoanvi(int a[], int n, int b[], int k)
+int ktHoanVi(int a[], int n, int b[], int m)
 {
-	if (k != n)
+	if (m != n)
 		return 0;
-	sapxep(a, n);
-	sapxep(b, k);
+	SapTang(a, n);
+	SapTang(b, m);
 	int flag = 1;
 	for (int i = 0; i < n; i++)
 		if (a[i] != b[i])
 			flag = 0;
 	return flag;
-}
-
-void xuat(int a[], int n, int b[], int k)
-{
-	int lc = kthoanvi(a, n, b, k);
-	if (lc == 1)
-		cout << "mang a la hoan vi cua mang b";
-	else
-		cout << "mang a khong phai la hoan vi cua mang b";
 }

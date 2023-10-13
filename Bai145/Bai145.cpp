@@ -1,20 +1,27 @@
 #include <iostream>
 #include<iomanip>
 using namespace std;
+
 void Nhap(float[], int&);
+void Xuat(float[], int);
 void HoanVi(float&, float&);
 void TangDan(float[], int);
 void GiamDan(float[], int);
 
 int main()
 {
-	float a[500];
-	int n;
-	Nhap(a, n);
-	cout << " Cac so duong cua mang sau khi duoc sap xep: ";
-	TangDan(a, n);
-	cout << "\nCac so am cua mang sau khi duoc sap xep: ";
-	GiamDan(a, n);
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	cout << "\nCac so duong cua mang sau khi duoc sap xep: " << endl;
+	TangDan(b, k);
+	cout << "\nCac so am cua mang sau khi duoc sap xep: " << endl;
+	GiamDan(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -22,40 +29,41 @@ void Nhap(float a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
 }
 
-void HoanVi(float& i, float& j)
+void Xuat(float a[], int n)
 {
-	if (i > j)
-	{
-		float temp = i;
-		i = j;
-		j = temp;
-	}
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
+}
+
+void HoanVi(float& a, float& b)
+{
+	float temp = a;
+	a = b;
+	b = temp;
 }
 
 
 void TangDan(float a[], int n)
 {
 	for (int i = 0; i <= n - 2; i++)
-		for (int j = i + 1; j <= n - 1; j++)
+		for (int j = i + 1; j <= n - 1;j++)
 			if (a[i] > 0 && a[j] > 0 && a[i] > a[j])
 				HoanVi(a[i], a[j]);
 	for (int i = 0; i < n; i++)
-		cout << setw(4) << a[i];
+		cout << fixed << setw(10) << setprecision(3) << a[i];
 }
 
 void GiamDan(float a[], int n)
 {
 	for (int i = 0; i <= n - 2; i++)
-		for (int j = i + 1; j <= n - 1; j++)
+		for (int j = i + 1;j <= n - 1;j++)
 			if (a[i] < 0 && a[j] < 0 && a[i] < a[j])
 				HoanVi(a[i], a[j]);
 	for (int i = 0; i < n; i++)
-		cout << setw(4) << a[i];
+		cout << fixed << setw(10) << setprecision(3) << a[i];
 }

@@ -1,19 +1,28 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
+
 void Nhap(int[], int&);
+void Xuat(int[], int);
 bool ktNguyenTo(int);
 void XayDung(int[], int, int[], int&);
 
 int main()
 {
-	int a[500];
-	int n;
-	Nhap(a, n);
-	int b[500];
+	int c[100];
 	int k;
-	XayDung(a, n, b, k);
-	for (int i = 0; i < k; i++)
-		cout << "b[" << i << "]= " << b[i] << endl;
+	Nhap(c, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(c, k);
+
+	int d[100];
+	int l;
+	XayDung(c, k, d, l);
+
+	cout << "\nMang chi chua cac so nguyen to: ";
+	Xuat(d, l);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -21,11 +30,15 @@ void Nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
+}
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
 bool ktNguyenTo(int n)
@@ -34,7 +47,7 @@ bool ktNguyenTo(int n)
 	for (int i = 1; i <= n; i++)
 		if (n % i == 0)
 			dem++;
-	if (dem == 2)
+	if(dem==2)
 		return true;
 	return false;
 }
@@ -42,7 +55,7 @@ bool ktNguyenTo(int n)
 void XayDung(int a[], int n, int b[], int& k)
 {
 	k = 0;
-	for (int i = 0; i < n; i++)
+	for(int i=0; i<n; i++)
 		if (ktNguyenTo(a[i]))
 		{
 			b[k] = a[i];

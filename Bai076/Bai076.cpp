@@ -1,48 +1,65 @@
 #include <iostream>
 #include <iomanip>
-void nhap(float[], int&, float&);
-float kt(int, float);
-void gannhat(float[], int, float);
 using namespace std;
+
+void Nhap(float[], int&);
+void Xuat(float[], int);
+float ktGiaTri(int, float);
+void TimViTri(float[], int, float);
 
 int main()
 {
-	float a[100];
-	float x;
-	int n;
-	nhap(a, n, x);
-	gannhat(a, n, x);
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nXuat mang mot chieu: " << endl;
+	Xuat(b, k);
+
+	int x;
+	cout << "\nNhap x: ";
+	cin >> x;
+
+	cout << "\nVi tri co gia tri gan x nhat la: ";
+	TimViTri(b, k, x);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n, float& x)
+void Nhap(float a[], int& n)
 {
-	cout << "nhap gia tri cua x:";
-	cin >> x;
-	cout << "nhap so luong so trong mang:";
+	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
 }
 
-float kt(float y, float x)
+void Xuat(float a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
+}
+
+float ktGiaTri(float y, float x)
 {
 	return abs(x - y);
 }
 
-void gannhat(float a[], int n, float x)
+void TimViTri(float a[], int n, float xx)
 {
-	float lc = kt(a[0], x);
+	float lc = ktGiaTri(a[0], xx);
 	for (int i = 1; i <= n - 1; i++)
 	{
-		if (kt(a[i], x) < lc)
-			lc = kt(a[i], x);
+		float dd = ktGiaTri(a[i], xx);
+		if (dd < lc)
+			lc = dd;
 	}
-	cout << "vi tri so gan thuc gan x nhat la:";
+
 	for (int i = 0; i <= n - 1; i++)
-		if (kt(a[i], x) == lc)
-			cout << setw(8) << i;
+	{
+		float dd = ktGiaTri(a[i], xx);
+		if (dd == lc)
+			cout << setw(10) << i;
+	}
 }

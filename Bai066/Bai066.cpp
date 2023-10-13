@@ -1,61 +1,65 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-void nhap(int[], int&);
-bool kiemtra(int);
-int diemphanbiet(int[], int);
-void xuat(int[], int);
+void Nhap(int[], int&);
+void Xuat(int[], int);
+bool ktNguyenTo(int);
+int DemGiaTri(int[], int);
 
 
 int main()
 {
-	int n;
-	int a[500];
-	nhap(a, n);
-	xuat(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	cout << "\nSo luong gia tri thoa dieu kien: " << DemGiaTri(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
-	cout << "nhap so luong phan tu trong mang: ";
+	cout << "Nhap n: ";
 	cin >> n;
-	cout << "nhap cac phan tu trong mang:\n";
+	srand(time(NULL));
 	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "a[" << i << "]: ";
-		cin >> a[i];
-	}
+		a[i] = rand() % (200 + 1) - 100;
 }
 
-bool kiemtra(int n)
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
+}
+
+bool ktNguyenTo(int k)
 {
 	int dem = 0;
-	for (int i = 1; i <= n; i++)
-		if (n % i == 0)
+	for (int i = 1; i <= k; i++)
+		if (k % i == 0)
 			dem++;
 	if (dem == 2)
 		return true;
-	else
-		return false;
+	return false;
 }
 
-int diemphanbiet(int a[], int n)
+int DemGiaTri(int a[], int n)
 {
 	int dem = 0;
-	for (int i = 0; i <= n - 1; i++)
+	for (int i = 0; i < n; i++)
 	{
-		bool flag = true;
+		int flag = 1;
 		for (int j = 0; j <= i - 1; j++)
-			if (a[i] == a[j])
-				flag = false;
-		if (kiemtra(a[i]) && flag == true)
+			if (a[j] == a[i])
+				flag = 0;
+		if (ktNguyenTo(a[i]) && flag == 1)
 			dem++;
 	}
 	return dem;
 }
 
-void xuat(int a[], int n)
-{
-	cout << "cac so nguyen to phan biet trong mang la: " << diemphanbiet(a, n);
-}

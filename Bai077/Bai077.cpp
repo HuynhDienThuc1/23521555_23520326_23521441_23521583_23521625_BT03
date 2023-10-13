@@ -1,59 +1,64 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-void nhap(float[], int&);
-float max(float[], int);
-float min(float[], int);
-void timdoan(float[], int, float&, float&);
-void xuat(float[], int, float&, float&);
+void Nhap(float[], int&);
+void Xuat(float[], int);
+float LonNhat(float[], int);
+float NhoNhat(float[], int);
+void TimDoan(float[], int, float&, float&);
 
 int main()
 {
-	int n;
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
 	float x, y;
-	float a[500];
-	nhap(a, n);
-	xuat(a, n, x, y);
+	TimDoan(b, k, x, y);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n)
+void Nhap(float a[], int& n)
 {
-	cout << "nhap vao so luong phan tu cua mang: ";
+	cout << "Nhap n: ";
 	cin >> n;
-	cout << "nhap vao cac phan tu cua mang:\n";
-	for (int i = 0; i < n; i++)
-	{
-		cout << "a[" << i << "]: ";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
 }
 
-float max(float a[], int n)
+void Xuat(float a[], int n)
 {
-	int max = a[0];
-	for (int i = 0; i < n; i++)
-		if (a[i] > max)
-			max = a[i];
-	return max;
-}
-float min(float a[], int n)
-{
-	int min = a[0];
-	for (int i = 0; i < n; i++)
-		if (a[i] < min)
-			min = a[i];
-	return min;
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
 }
 
-void timdoan(float a[], int n, float& x, float& y)
+float LonNhat(float a[], int n)
 {
-	x = min(a, n);
-	y = max(a, n);
+	float lc = a[0];
+	for (int i = 0; i < n; i++)
+		if (a[i] > lc)
+			lc = a[i];
+	return lc;
 }
 
-void xuat(float a[], int n, float& x, float& y)
+float NhoNhat(float a[], int n)
 {
-	timdoan(a, n, x, y);
-	cout << "[" << x << ", " << y << "]";
+	int lc = a[0];
+	for (int i = 0; i < n; i++)
+		if (a[i] < lc)
+			lc = a[i];
+	return lc;
+}
+
+void TimDoan(float a[], int n, float& x, float& y)
+{
+	x = NhoNhat(a, n);
+	y = LonNhat(a, n);
+	cout << "\nKhoang gia tri thoa man dieu kien la: " << "[" << x << ", " << y << "]";
 }

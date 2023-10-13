@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 void Nhap(int[], int&);
@@ -9,26 +8,28 @@ int DemXuatHien(int[], int, int[], int);
 
 int main()
 {
-	int b[100];
+	int c[100];
 	int k;
-	Nhap(b, k);
-	cout << "\nMang a:\n";
-	Xuat(b, k);
+	Nhap(c, k);
 
-	int a[100];
+	cout << "Mang a ban dau: ";
+	Xuat(c, k);
+
+	int d[100];
 	int l;
-	Nhap(a, l);
-	cout << "\nMang b:\n";
-	Xuat(a, l);
+	Nhap(d, l);
 
-	int kq = DemXuatHien(b, k, a, l);
-	cout << "\nSo lan xuat hien cua mang a trong mang b: " << kq;
+	cout << "Mang b ban dau: ";
+	Xuat(d, l);
+
+	cout << "\nSo lan xuat hien cua mang a trong mang b: " << DemXuatHien(c, k, d, l);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
 void Nhap(int a[], int& n)
 {
-	cout << "\nNhap so phan tu mang: ";
+	cout << "\nNhap n: ";
 	cin >> n;
 	srand(time(NULL));
 	for (int i = 0; i < n; i++)
@@ -37,7 +38,6 @@ void Nhap(int a[], int& n)
 
 void Xuat(int a[], int n)
 {
-	cout << n << endl;
 	for (int i = 0; i < n; i++)
 		cout << setw(10) << a[i];
 }

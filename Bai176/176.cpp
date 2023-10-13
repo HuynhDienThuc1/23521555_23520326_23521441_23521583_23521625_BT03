@@ -21,7 +21,10 @@ void nhap(int a[], int& n)
 	cin >> n;
 	cout << "Nhap cac phan tu cua mang: ";
 	for (int i = 0; i < n; i++)
+	{
+		cout << "a[" << i << "]: ";
 		cin >> a[i];
+	}
 }
 
 void lietke(int a[], int n)

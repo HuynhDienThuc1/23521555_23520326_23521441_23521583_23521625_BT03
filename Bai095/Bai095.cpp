@@ -1,33 +1,48 @@
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 using namespace std;
 
 void Nhap(int[], int&);
-bool Vitrile(int);
-int Sapxep(int[], int);
+bool ktHoanThien(int);
+int HoanThienCuoi(int[], int);
+void Xuat(int[], int);
 
 int main()
 {
-	int n;
-	int a[500];
-	Nhap(a, n);
-	cout <<"So hoan thien cuoi cung: "<< Sapxep(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nXuat mang mot chieu: " << endl;
+	Xuat(b, k);
+
+	int dd = HoanThienCuoi(b, k);
+	if (dd == -1)
+		cout << "\nKhong co so hoan thien trong mang";
+	else
+		cout << "\nSo hoan thien cuoi cung: " << dd;
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
+
 void Nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	cout << "Nhap mang:\n";
-	for (int i = 0; i < n; i++)
-	{
-		cout << "A[" << i << "] = ";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
 
-bool Vitrile(int k)
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
+}
+
+bool ktHoanThien(int k)
 {
 	int s = 0;
 	for (int i = 1; i < k; i++)
@@ -37,10 +52,10 @@ bool Vitrile(int k)
 		return true;
 	return false;
 }
-int Sapxep(int a[], int n)
+int HoanThienCuoi(int a[], int n)
 {
 	for (int i = n - 1; i >= 0; i--)
-		if (Vitrile(a[i]) == true)
+		if (ktHoanThien(a[i]) == true)
 			return a[i];
 	return -1;
 }

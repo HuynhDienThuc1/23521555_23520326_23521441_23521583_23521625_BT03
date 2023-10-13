@@ -36,6 +36,7 @@ void Xuat(float a[], int n)
 {
 	for (int i = 0; i <= n - 1; i++)
 		cout << fixed << setw(10) << setprecision(3) << a[i];
+	}
 }
 
 void DaoMang(float a[], int n)

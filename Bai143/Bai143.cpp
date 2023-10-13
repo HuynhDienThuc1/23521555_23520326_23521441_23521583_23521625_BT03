@@ -52,6 +52,7 @@ void XuatHoanVi(int a[], int n, int b[], int m)
 		cout << "Hai mang khong phai la hoan vi cua nhau";
 	else
 		cout << "Hai mang la hoan vi cua nhau";
+	}
 }
 
 void SapTang(int a[], int n)

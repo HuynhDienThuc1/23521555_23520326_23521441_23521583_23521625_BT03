@@ -22,7 +22,10 @@ void nhap(float a[], int& n)
 	cin >> n;
 	cout << "Nhap cac phan tu cua mang: ";
 	for (int i = 0; i < n; i++)
+	{
+		cout << "a[" << i << "]: ";
 		cin >> a[i];
+	}
 }
 
 float max(float a[], int n)

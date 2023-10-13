@@ -1,43 +1,37 @@
 #include<iostream>
 #include<cmath>
 #include<iomanip>
+
 using namespace std;
-void nhap(int[], int&);
-void xuat(int[], int);
-bool ktrdoixung(int);
-int doixungdau(int[], int);
+void Nhap(int[], int&);
+void Xuat(int[], int);
+bool ktDoiXung(int);
+int DoiXungDau(int[], int);
 
 int main()
 {
-	int a[500];
-	int n;
-	nhap(a, n);
-	cout << "Mang ban dau la: ";
-	xuat(a, n);
-	cout << "So doi xung dau tien trong mang la: ";
-	cout<<doixungdau(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	cout << "\nSo Doi Xung dau tien:  " << setw(10) << DoiXungDau(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]=";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
 
-void xuat(int a[], int n)
-{
-	for (int i = 0; i < n; i++)
-		cout << a[i] << " ";
-	cout << endl;
-}
-
-bool ktrdoixung(int n)
+bool ktDoiXung(int n)
 {
 	int t = n;
 	int dn = 0;
@@ -51,10 +45,16 @@ bool ktrdoixung(int n)
 	return false;
 }
 
-int doixungdau(int a[], int n)
+int DoiXungDau(int a[], int n)
 {
 	for (int i = 0; i < n; i++)
-		if (ktrdoixung(a[i]))
+		if (ktDoiXung(a[i]))
 			return a[i];
 	return 10;
+}
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }

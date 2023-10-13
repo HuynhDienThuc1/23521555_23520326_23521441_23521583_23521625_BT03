@@ -4,30 +4,32 @@
 #include<string>
 using namespace std;
 
-void nhap(string, int[], int&);
-void xuat(int[], int);
+void Nhap(string, int[], int&);
+void Xuat(int[], int);
 
 int main()
 {
-	int a[500];
-	int n;
-	nhap("intdata01.inp", a, n);
-	cout << "Mang ban dau ";
-	xuat(a, n);
+	int b[100];
+	int k;
+	Nhap("intdata01.inp", b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(string filename , int a[], int& n)
+void Nhap(string filename , int a[], int& n)
 {
 	ifstream fi(filename);
 	fi >> n;
-	for(int i=0; i<=n-1;i++)
-		fi>>a[i];
+	for (int i = 0; i <= n - 1; i++)
+		fi >> a[i];
 }
 
-void xuat(int a[], int n)
+void Xuat(int a[], int n)
 {
-	cout<<n<<endl;
-	for(int i=0;i<=n-1;i++)
-		cout<<setw(10)<<a[i];
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }

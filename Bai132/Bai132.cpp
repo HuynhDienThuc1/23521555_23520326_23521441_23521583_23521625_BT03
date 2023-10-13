@@ -38,6 +38,7 @@ void Xuat(int a[], int n)
 {
 	for (int i = 0; i <= n - 1; i++)
 		cout << setw(10) << a[i];
+	}
 }
 
 void XayDung(int a[], int n, int b[], int& k)

@@ -1,21 +1,26 @@
 #include <iostream>
-#include <cstdlib>
 #include <iomanip>
 using namespace std;
 
 void Nhap(int[], int&);
+void Xuat(int[], int);
 int ChanDau(int[], int);
 int ChanNhoNhat(int[], int);
 
 int main()
 {
-	int a[100];
-	int n;
-	Nhap(a, n);
-	if (ChanNhoNhat(a, n) != -1)
-		cout << "Gia tri chan nho nhat la: " << ChanNhoNhat(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	if (ChanNhoNhat(b, k) != -1)
+		cout << "\nGia tri chan nho nhat: " << ChanNhoNhat(b, k);
 	else
-		cout << "Khong ton tai gia tri chan.";
+		cout << "\nKhong ton tai gia tri chan.";
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -23,14 +28,17 @@ void Nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	//srand(time(NULL));
-	cout << "Nhap mang: \n";
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "] = ";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
+}
+
 int ChanDau(int a[], int n)
 {
 	for (int i = 0; i < n; i++)
@@ -38,6 +46,7 @@ int ChanDau(int a[], int n)
 			return a[i];
 	return -1;
 }
+
 int ChanNhoNhat(int a[], int n)
 {
 	int lc = ChanDau(a, n);

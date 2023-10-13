@@ -1,21 +1,26 @@
 #include <iostream>
-#include <cstdlib>
 #include <iomanip>
 using namespace std;
 
 void Nhap(int[], int&);
+void Xuat(int[], int);
 int TimGiaTri(int[], int);
 int ChuSoDau(int);
 
 int main()
 {
-	int a[100];
-	int n;
-	Nhap(a, n);
-	if (TimGiaTri(a, n) != 0)
-		cout << "Gia tri dau tien co chu so dau tien la so le la: " << fixed << setprecision(3) << TimGiaTri(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+	
+	if (TimGiaTri(b, k) != 0)
+		cout << "\nGia tri dau tien co chu so dau tien la so le la: " << setw(10) << TimGiaTri(b, k);
 	else
-		cout << "Khong ton tai gia tri co chu so dau tien la so le.";
+		cout << "\nKhong ton tai gia tri co chu so dau tien la so le.";
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -23,24 +28,29 @@ void Nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	//srand(time(NULL));
-	cout << "Nhap mang: \n";
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "] = ";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
-int ChuSoDau(int x)
+
+void Xuat(int a[], int n)
 {
-	while (x >= 10)
-		x /= 10;
-	return x;
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
+
+int ChuSoDau(int n)
+{
+	int t = abs(n);
+	while (t >= 10)
+		t /= 10;
+	return t;
+}
+
 int TimGiaTri(int a[], int n)
 {
 	for (int i = 0; i < n; i++)
-		if (ChuSoDau(a[i]) % 2 == 1)
+		if (ChuSoDau(a[i]) & 1)
 			return a[i];
 	return 0;
 }

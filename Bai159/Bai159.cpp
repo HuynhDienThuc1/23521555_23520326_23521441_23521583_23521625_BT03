@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-
 using namespace std;
 
 void Nhap(float[], int&);
@@ -13,7 +12,7 @@ int main()
 	int k;
 	Nhap(b, k);
 
-	cout << "\nMang b: ";
+	cout << "\nMang ban dau: ";
 	Xuat(b, k);
 
 	cout << "\nDich phai xoay vong cac phan tu trong mang: \n";
@@ -43,5 +42,4 @@ void DichPhai(float a[], int n)
 	for (int i = n; i >= 1; i--)
 		a[i] = a[i - 1];
 	a[0] = temp;
-
 }

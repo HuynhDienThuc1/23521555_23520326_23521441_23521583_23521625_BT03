@@ -44,6 +44,7 @@ void XuatHoanThien(int a[], int n)
 		cout << "Mang khong ton tai so hoan thien lon hon 256";
 	else
 		cout << "Mang co ton tai so hoan thien lon hon 256";
+	}
 }
 
 bool ktHoanThien(int k)

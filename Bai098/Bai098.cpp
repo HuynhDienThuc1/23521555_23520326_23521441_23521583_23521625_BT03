@@ -1,29 +1,45 @@
 #include <iostream>
 #include <iomanip>
-void nhap(float[], int&);
+using namespace std;
+
+void Nhap(float[], int&);
+void Xuat(float[], int);
 float DuongDau(float[], int);
 float DuongNhoNhat(float[], int);
-using namespace std;
 
 int main()
 {
-	int n;
-	float a[100];
-	nhap(a, n);
-	cout << "gia tri duong nho nhat la:" << DuongNhoNhat(a, n);
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	float dd = DuongDau(b, k);
+	if (dd == 0)
+		cout << "\nKhong co gia tri duong trong mang";
+	else
+		cout << "\nGia tri thoa dieu kien: " << DuongNhoNhat(b,k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n)
+void Nhap(float a[], int& n)
 {
-	cout << "nhap so luong chu so cua mang:";
+	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
 }
+
+void Xuat(float a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
+}
+
 
 float DuongDau(float a[], int n)
 {

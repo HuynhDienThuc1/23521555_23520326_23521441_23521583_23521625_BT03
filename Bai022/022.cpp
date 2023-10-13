@@ -16,9 +16,9 @@ int main()
 }
 void nhap(int a[], int& n)
 {
-	cout << "Nhap so luong phan tu cua mang: ";
+	cout << "Nhap so luong phan tu cua mang:";
 	cin >> n;
-	cout << "Nhap cac phan tu cua mang: ";
+	cout << "Nhap cac phan tu cua mang:\n";
 	for (int i = 0; i <= n - 1; i++)
 	{
 		cout << "Nhap a[" << i << "]: ";

@@ -3,44 +3,50 @@
 #include<iomanip>
 using namespace std;
 
-void nhap(float[], int&);
-void xuat(float[], int);
-float amdau(float[], int);
+void Nhap(float[], int&);
+void Xuat(float[], int);
+void AmDau(float[], int);
 
 int main()
 {
-	float a[500];
-	int n;
-	nhap(a, n);
-	cout << "Mang ban dau la: ";
-	xuat(a, n);
-	cout << "so am dau tien cua mang la: ";
-	cout << amdau(a, n);
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+	
+	AmDau(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n)
+void Nhap(float a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]=";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100.0 + (rand() / (RAND_MAX / (100.0 - (-100.0))));
 }
 
-void xuat(float a[], int n)
+void AmDau(float a[], int n)
 {
-	for (int i = 0; i < n; i++)
-		cout << a[i] << " ";
-	cout << endl;
-}
-
-float amdau(float a[], int n)
-{
+	int dem = 0;
 	for (int i = 0; i < n; i++)
 		if (a[i] < 0)
-			return a[i];
-	return 0;
+		{
+			cout << "\nGia tri Am dau: ";
+			cout << fixed << setw(10) << setprecision(3) << a[i];
+			return;
+		}
+	if (dem == 0)
+		cout << "Khong co gia tri am trong mang: ";
+	return;
+}
+
+void Xuat(float a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
 }

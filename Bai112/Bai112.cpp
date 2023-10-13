@@ -1,18 +1,24 @@
 #include <iostream>
 #include <iomanip>
 using namespace std;
+
 void Nhap(int[], int&);
+void Xuat(int[], int);
 int TanSuat(int[], int, int);
 int TimGiaTri(int[], int);
 void LietKe(int[], int);
 
 int main()
 {
-	int a[100];
-	int n;
-	Nhap(a, n);
-	cout << " Gia tri co so lan xuat hien nhieu nhat: ";
-	LietKe(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	LietKe(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -20,11 +26,15 @@ void Nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
+}
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
 int TanSuat(int a[], int n, int x)
@@ -47,6 +57,7 @@ int TimGiaTri(int a[], int n)
 
 void LietKe(int a[], int n)
 {
+	cout << "\nGia tri co so lan xuat hien nhieu nhat: ";
 	int lc = TimGiaTri(a,n);
 	int ts = TanSuat(a, n, lc);
 	for (int i = 0; i <= n; i++)
@@ -56,6 +67,6 @@ void LietKe(int a[], int n)
 			if (a[j] == a[i])
 				flag = 0;
 		if (TanSuat(a, n, a[i]) == ts && flag == 1)
-			cout << setw(4) << a[i];
+			cout << setw(10) << a[i];
 	}
 }

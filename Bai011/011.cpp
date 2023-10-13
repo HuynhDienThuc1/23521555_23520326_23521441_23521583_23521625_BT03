@@ -20,9 +20,12 @@ void nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	cout << "Nhap cac phan tu cua mang: " << endl;
+	cout << "Nhap cac phan tu cua mang:\n" << endl;
 	for(int i = 0; i < n; i++)
+	{
+		cout << "a[" << i << "]: ";
 		cin >> a[i];
+	}
 }
 
 bool ktdang3m(int n)

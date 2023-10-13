@@ -2,42 +2,36 @@
 #include<cmath>
 #include<iomanip>
 using namespace std;
-void nhap(int[], int&);
-void xuat(int[], int);
-int vitrilonnhat(int[], int);
-int timchuso(int[], int);
+
+void Nhap(int[], int&);
+void Xuat(int[], int);
+int ViTriLonNhat(int[], int);
+int TimChuSo(int[], int);
 
 int main()
 {
-	int a[500];
-	int n;
-	nhap(a, n);
-	cout << "Mang ban dau la: ";
-	xuat(a, n);
-	cout << "Ket qua la: ";
-	cout << timchuso(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	cout << "\nChu so xuat hien nhieu nhat trong mang: " << TimChuSo(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]=";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
 
-void xuat(int a[], int n)
-{
-	for (int i = 0; i < n; i++)
-		cout << a[i] << " ";
-	cout << endl;
-}
-
-int vitrilonnhat(int a[], int n)
+int ViTriLonNhat(int a[], int n)
 {
 	int lc = 0;
 	for (int i = 0; i < n; i++)
@@ -46,7 +40,7 @@ int vitrilonnhat(int a[], int n)
 	return lc;
 }
 
-int timchuso(int a[], int n)
+int TimChuSo(int a[], int n)
 {
 	int dem[10] = { 0,0,0,0,0,0,0,0,0 };
 	for (int i = 0; i < n; i++)
@@ -61,5 +55,11 @@ int timchuso(int a[], int n)
 			t = t / 10;
 		}
 	}
-	return vitrilonnhat(dem, 10);
+	return ViTriLonNhat(dem, 10);
+}
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }

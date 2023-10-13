@@ -1,44 +1,55 @@
 #include <iostream>
-#include <cmath>
-
+#include<iomanip>
 using namespace std;
 
 void Nhap(float[], int&);
-float Lonnhat(float[], int);
-void Lietke(float[], int);
+void Xuat(float[], int);
+float LonNhat(float[], int);
+void LietKe(float[], int);
 
 int main()
 {
-	int n;
-	float a[500];
-	Nhap(a, n);
-	cout << "Vi tri chua gia tri lon nhat: ";
-	Lietke(a, n);
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	LietKe(b, k);
+	cout << "\n\n\nKet thuc!!!";
+	return 0;
 }
+
 void Nhap(float a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	cout << "Nhap mang:\n";
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]= ";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100.0 + (rand() / (RAND_MAX / (100.0 - (-100.0))));
 }
-float Lonnhat(float a[],int n)
-{
-	int ln = a[0];
-	for (int i = 0; i < n; i++)
-		if (a[i] > ln)
-			ln = a[i];
-	return ln;
-}
-void Lietke(float a[], int n)
-{
-	float lk= Lonnhat(a, n);
-	for (int i = 0; i < n; i++)
-		if (a[i] == lk)
-			cout << i<<" ";
 
+void Xuat(float a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
+}
+
+float LonNhat(float a[],int n)
+{
+	float lc = a[0];
+	for (int i = 0; i < n; i++)
+		if (a[i] > lc)
+			lc = a[i];
+	return lc;
+}
+
+void LietKe(float a[], int n)
+{
+	float lc= LonNhat(a, n);
+	cout << "\nVi tri chua gia tri lon nhat: ";
+	for (int i = 0; i < n; i++)
+		if (a[i] == lc)
+			cout << i;
 }

@@ -1,14 +1,16 @@
-#include <iostream>
-#include <iomanip>
+#include<iostream>
+#include<iomanip>
+#include<cmath>
 using namespace std;
 
 void Nhap(float[], int&);
 void Xuat(float[], int);
+float NhoNhat(float[], int);
 void LietKe(float[], int);
 
 int main()
 {
-	float b[100];
+	float b[10000];
 	int k;
 	Nhap(b, k);
 
@@ -19,7 +21,6 @@ int main()
 	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
-
 
 void Nhap(float a[], int& n)
 {
@@ -36,16 +37,20 @@ void Xuat(float a[], int n)
 		cout << fixed << setw(10) << setprecision(3) << a[i];
 }
 
+float NhoNhat(float a[], int n)
+{
+	float lc = a[0];
+	for (int i = 0;i < n;i++)
+		if (a[i] < lc)
+			lc = a[i];
+	return lc;
+}
+
 void LietKe(float a[], int n)
 {
-	cout << "\nCac gia tri cuc tieu: ";
-	if (n == 1)
-		return;
-	if (a[0] < a[1])
-		cout << fixed << setw(10) << setprecision(3) << a[0];
-	for (int i = 1;i <= n - 2;i++)
-		if (a[i] < a[i - 1] && a[i] < a[i + 1])
-			cout << fixed << setw(10) << setprecision(3) << a[i];
-	if (a[n - 1] < a[n - 2])
-		cout << fixed << setw(10) << setprecision(3) << a[n - 1];
+	cout << "\nCac vi tri nho nhat: ";
+	float lc = NhoNhat(a, n);
+	for (int i = 0; i < n; i++)
+		if (a[i] == lc)
+			cout << i;
 }

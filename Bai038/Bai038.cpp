@@ -15,15 +15,14 @@ int main()
 	cout << "\nXuat mang mot chieu: ";
 	Xuat(a, n);
 
-	cout << "\nTong nhung gia tri co chu so dau la le: ";
-	cout << TongGiaTri(a, n);
+	cout << "\nTong nhung gia tri thoa dieu kien: " << TongGiaTri(a, n);
 
 	return 0;
 }
 
 void Nhap(int a[], int& n)
 {
-	cout << "Nhap n : ";
+	cout << "Nhap n: ";
 	cin >> n;
 	srand(time(NULL));
 	for (int i = 0; i <= n - 1; i++)
@@ -32,7 +31,6 @@ void Nhap(int a[], int& n)
 
 void Xuat(int a[], int n)
 {
-	cout << n << endl;
 	for (int i = 0; i <= n - 1; i++)
 		cout << setw(10) << a[i];
 }

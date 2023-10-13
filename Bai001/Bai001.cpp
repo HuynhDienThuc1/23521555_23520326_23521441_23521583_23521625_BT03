@@ -7,11 +7,14 @@ void Xuat(int[], int);
 
 int main()
 {
-	int A[201];
-	int n;
-	Nhap(A, n);
-	cout << "\nMang là: ";
-	Xuat(A, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 

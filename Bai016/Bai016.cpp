@@ -8,20 +8,21 @@ void LietKe(int[], int, int, int);
 
 int main()
 {
-	int a[500], n, j, k;
-	Nhap(a, n);
+	int b[500];
+	int k, x, y;
+	Nhap(b, k);
 
-	cout << "\nXuat mang mot chieu: ";
-	Xuat(a, n);
+	cout << "\nXuat mang mot chieu: " << endl;
+	Xuat(b, k);
 
-	cout << "\nNhap khoang trai: ";
-	cin >> j; 
-	cout << "\nNhap khoang phai: ";
-	cin >> k;
+	cout << "\nNhap x: ";
+	cin >> x;
+	cout << "\nNhap y: ";
+	cin >> y;
 
 	cout << "\nNhung gia tri chan trong khoang: ";
-	LietKe(a, n, j, k);
-
+	LietKe(b, k, x, y);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -36,7 +37,6 @@ void Nhap(int a[], int& n)
 
 void Xuat(int a[], int n)
 {
-	cout << n << endl;
 	for (int i = 0; i <= n - 1; i++)
 		cout << setw(10) << a[i];
 }

@@ -5,7 +5,7 @@ using namespace std;
 
 void Nhap(float[], int&);
 void Xuat(float[], int);
-void LietKe(float[], int);
+float Tong(float[], int);
 
 int main()
 {
@@ -16,7 +16,7 @@ int main()
 	cout << "\nMang ban dau: ";
 	Xuat(b, k);
 
-	LietKe(b, k);
+	cout << "\nTong cac phan tu: " << Tong(b, k);
 	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
@@ -36,16 +36,10 @@ void Xuat(float a[], int n)
 		cout << fixed << setw(10) << setprecision(3) << a[i];
 }
 
-void LietKe(float a[], int n)
+float Tong(float a[], int n)
 {
-	cout << "\nCac gia tri thoa dieu kien:";
-	if (n == 1)
-		return;
-	if (a[0] < a[1] || a[0] > a[1])
-		cout << fixed << setw(10) << setprecision(3) << a[0];
-	for (int i = 1; i <= n - 2; i++)
-		if ((a[i] > a[i + 1] && a[i] > a[i - 1]) || (a[i] < a[i + 1] && a[i] < a[i - 1]))
-			cout << fixed << setw(10) << setprecision(3) << a[i];
-	if (a[n - 1] < a[n - 2] || a[n - 1] > a[n - 2])
-		cout << fixed << setw(10) << setprecision(3) << a[n - 1];
+	float s = 0;
+	for (int i = 0; i <= n - 1; i++)
+		s += a[i];
+	return s;
 }

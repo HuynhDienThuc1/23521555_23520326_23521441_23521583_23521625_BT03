@@ -21,8 +21,13 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{12e417c1-f2e0-4442-bfb2-5bfd571aff8c}</ProjectGuid>
-    <RootNamespace>Bai108</RootNamespace>
+<<<<<<< HEAD:Bai173/Bai173.vcxproj
+    <ProjectGuid>{2a211a2a-4263-43bc-bc2d-7869afee7af6}</ProjectGuid>
+    <RootNamespace>Bai173</RootNamespace>
+=======
+    <ProjectGuid>{98977f7e-2959-49b0-81c8-bf89dffa9dbc}</ProjectGuid>
+    <RootNamespace>Bai108remake</RootNamespace>
+>>>>>>> 3645da4ffb2fbc1a0b6adc9408b4b1d56f81914f:Bai108 remake/Bai108 remake.vcxproj
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +132,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< HEAD:Bai173/Bai173.vcxproj
+    <ClCompile Include="Bai173.cpp" />
+=======
     <ClCompile Include="Bai108.cpp" />
+>>>>>>> 3645da4ffb2fbc1a0b6adc9408b4b1d56f81914f:Bai108 remake/Bai108 remake.vcxproj
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

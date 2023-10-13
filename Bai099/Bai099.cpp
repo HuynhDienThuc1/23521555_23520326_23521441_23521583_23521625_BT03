@@ -4,7 +4,10 @@ using namespace std;
 
 void Nhap(float[], int&);
 void Xuat(float[], int);
-float CuoiCung(float[], int);
+int ViTriDau(float[], int);
+int TimViTri(float[], int);
+
+
 
 int main()
 {
@@ -15,11 +18,7 @@ int main()
 	cout << "\nMang ban dau: ";
 	Xuat(b, k);
 
-	float dd = CuoiCung(b, k);
-	if (dd == 0)
-		cout << "\nKhong co gia tri nao thoa dieu kien";
-	else
-		cout << "\nGia tri thoa dieu kien:" << dd;
+	cout << "\n Vi tri thoa man dieu kien: " << TimViTri(b, k);
 	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
@@ -30,7 +29,7 @@ void Nhap(float a[], int& n)
 	cin >> n;
 	srand(time(NULL));
 	for (int i = 0; i <= (n - 1); i++)
-		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
+		a[i] = -100 + (rand() / (RAND_MAX / (100.0 - (-100.0))));
 }
 
 void Xuat(float a[], int n)
@@ -39,11 +38,21 @@ void Xuat(float a[], int n)
 		cout << fixed << setw(10) << setprecision(3) << a[i];
 }
 
-
-float CuoiCung(float a[], int n)
+int ViTriDau(float a[], int n)
 {
-	for (int i= n-1; i >=0; i--)
-		if (a[i]<0 && a[i]>-1)
-			return a[i];
-	return 0;
+	for (int i = 0; i < n; i++)
+		if (a[i] > 0)
+			return i;
+	return -1;
+}
+
+int TimViTri(float a[], int n)
+{
+	int lc = ViTriDau(a, n);
+	if (lc == -1)
+		return -1;
+	for (int i = 0; i < n; i++)
+		if (a[i] > 0 && a[i] < a[lc])
+			lc = i;
+	return lc;
 }

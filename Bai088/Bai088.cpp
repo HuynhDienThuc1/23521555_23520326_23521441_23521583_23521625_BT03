@@ -4,8 +4,8 @@ using namespace std;
 
 void Nhap(int[], int&);
 void Xuat(int[], int);
-bool ktHoanThien(int);
-int HoanThienDau(int[], int);
+bool ktChinhPhuong(int);
+int ChinhPhuongDau(int[], int);
 
 int main()
 {
@@ -16,7 +16,7 @@ int main()
 	cout << "\nMang ban dau: ";
 	Xuat(b, k);
 
-	cout << "\nSo hoan thien dau tien la " << HoanThienDau(b, k);
+	cout << "\nGia tri thoa man dieu kien: " << ChinhPhuongDau(b, k);
 	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
@@ -36,21 +36,18 @@ void Xuat(int a[], int n)
 		cout << setw(10) << a[i];
 }
 
-bool ktHoanThien( int n)
+bool ktChinhPhuong(int n)
 {
-	int s = 0;
-	for (int i = 1; i < n; i++)
-		if (n % i == 0)
-			s = s + i;
-	if (s == n)
-		return true;
+	for (int i = 1; i * i <= n; i++)
+		if (n == i * i)
+			return true;
 	return false;
 }
 
-int HoanThienDau(int a[], int n)
+int ChinhPhuongDau(int a[], int n)
 {
 	for (int i = 0; i < n; i++)
-		if (ktHoanThien(a[i]))
+		if (ktChinhPhuong(a[i]))
 			return a[i];
 	return -1;
 }

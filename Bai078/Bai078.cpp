@@ -3,15 +3,20 @@
 using namespace std;
 
 void Nhap(float[], int&);
-float AmLonNhat(float[], int);
+void Xuat(float[], int);
+float TimX(float[], int);
 
 int main()
 {
-	float A[30];
-	int n;
-	Nhap(A, n);
-	cout << "Gia tri x la: " << "[" << -AmLonNhat(A, n) << "," << AmLonNhat(A, n) << "]";
+	float b[100];
+	int k;
+	Nhap(b, k);
 
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	cout << "\nGia tri x la: " << "[" << -TimX(b, k) << "," << TimX(b, k) << "]";
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
@@ -19,16 +24,20 @@ void Nhap(float a[], int& n)
 {
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "Nhap a[" << i << "]: ";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= (n - 1); i++)
+		a[i] = -100.0 + (rand() / (RAND_MAX / (100.0 - (-100.0))));
 }
 
-float AmLonNhat(float a[], int n)
+void Xuat(float a[], int n)
 {
-	float lc = 0;
+	for (int i = 0; i <= n - 1; i++)
+		cout << fixed << setw(10) << setprecision(3) << a[i];
+}
+
+float TimX(float a[], int n)
+{
+	float lc = abs(a[0]);
 	for (int i = 0; i <= n - 1; i++)
 		if (lc < abs(a[i]))
 			lc = abs(a[i]);

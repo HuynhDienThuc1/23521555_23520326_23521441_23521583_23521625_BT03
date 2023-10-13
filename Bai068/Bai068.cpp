@@ -1,21 +1,39 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
+
+void Nhap(int[], int&);
+void Xuat(int[], int);
 int TanSuat(int[], int, int);
 void LietKe(int[], int);
 
 int main()
 {
-	int a[100];
-	int n;
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	LietKe(b, k);
+	cout << "\n\n\nKet thuc!!!";
+	return 0;
+}
+
+void Nhap(int a[], int& n)
+{
 	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
-	LietKe(a, n);
-	return 0;
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
+}
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
 int TanSuat(int a[], int n, int x)
@@ -38,7 +56,7 @@ void LietKe(int a[], int n)
 		if (flag == 1)
 		{
 			int dem = TanSuat(a, n, a[i]);
-			cout << "\nGia tri :" << a[i];
+			cout << "\nSo lan xuat hien cua gia tri :" << a[i] << ": ";
 			cout << "(" << dem << ")";
 		}
 	}

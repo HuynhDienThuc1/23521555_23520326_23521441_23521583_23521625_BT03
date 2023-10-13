@@ -2,59 +2,60 @@
 #include<cmath>
 #include<iomanip>
 using namespace std;
-void nhap(float[], int&);
-void xuat(float[], int);
-void xoavitri(float[], int&, int);
-void xoatrung(float[], int&, float);
-int tansuat(float[], int, float);
-void xoaphantu(float[], int&);
+
+void Nhap(float[], int&);
+void Xuat(float[], int);
+void XoaViTri(float[], int&, int);
+void XoaTrung(float[], int&, float);
+int TanSuat(float[], int, float);
+void XoaPhanTu(float[], int&);
 
 int main()
 {
-	float a[500];
-	int n;
-	nhap(a, n);
-	cout << "Mang ban dau la: ";
-	xuat(a, n);
-	cout << "Ket qua la: ";
-	xoaphantu(a, n);
-	xuat(a, n);
+	float b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nMang ban dau: ";
+	Xuat(b, k);
+
+	cout << "\nMang sau khi xoa: ";
+	XoaPhanTu(b, k);
+	Xuat(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(float a[], int& n)
+void Nhap(float a[], int& n)
 {
-	cout << "Nhap so phan tu cua mang: ";
+	cout << "Nhap n: ";
 	cin >> n;
-	for (int i = 0; i < n; i++)
-	{
-		cout << "Nhap a[" << i << "]=";
-		cin >> a[i];
-	}
+	srand(time(NULL));
+	for (int i = 0; i <= n - 1; i++)
+		a[i] = rand() % (200 + 1) - 100;
 }
 
-void xuat(float a[], int n)
+void Xuat(float a[], int n)
 {
-	for (int i = 0; i < n; i++)
-		cout << a[i] << " ";
-	cout << endl;
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
-void xoavitri(float a[], int& n, int k)
+void XoaViTri(float a[], int& n, int k)
 {
 	for (int i = k; i <= n - 2; i++)
 		a[i] = a[i + 1];
 	n--;
 }
 
-void xoatrung(float a[], int& n, float x)
+void XoaTrung(float a[], int& n, float x)
 {
 	for (int i = n - 1; i >= 0; i--)
 		if (a[i] == x)
-			xoavitri(a, n, i);
+			XoaViTri(a, n, i);
 }
 
-int tansuat(float a[], int n, float x)
+int TanSuat(float a[], int n, float x)
 {
 	int dem = 0;
 	for (int i = 0; i <= n - 1; i++)
@@ -63,9 +64,9 @@ int tansuat(float a[], int n, float x)
 	return dem;
 }
 
-void xoaphantu(float a[], int& n)
+void XoaPhanTu(float a[], int& n)
 {
 	for (int i = n - 1; i >= 0; i--)
-		if (tansuat(a, n, a[i]) > 1)
-			xoatrung(a, n, a[i]);
+		if (TanSuat(a, n, a[i]) > 1)
+			XoaTrung(a, n, a[i]);
 }

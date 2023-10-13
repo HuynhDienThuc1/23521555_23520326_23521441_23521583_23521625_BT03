@@ -1,11 +1,11 @@
-#include <iostream>
-#include <iomanip>
+#include<iostream>
+#include<iomanip>
 using namespace std;
 
 void Nhap(int[], int&);
 void Xuat(int[], int);
-bool ktHoanThien(int);
-int HoanThienDau(int[], int);
+int ucln(int, int);
+int TimUCLN(int[], int);
 
 int main()
 {
@@ -16,7 +16,7 @@ int main()
 	cout << "\nMang ban dau: ";
 	Xuat(b, k);
 
-	cout << "\nSo hoan thien dau tien la " << HoanThienDau(b, k);
+	cout << "\nUoc chung lon nhat cua tat ca cac phan tu tren mang: " << TimUCLN(b, k);
 	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
@@ -36,21 +36,24 @@ void Xuat(int a[], int n)
 		cout << setw(10) << a[i];
 }
 
-bool ktHoanThien( int n)
+int ucln(int a, int b)
 {
-	int s = 0;
-	for (int i = 1; i < n; i++)
-		if (n % i == 0)
-			s = s + i;
-	if (s == n)
-		return true;
-	return false;
+	a = abs(a);
+	b = abs(b);
+	while (a * b != 0)
+	{
+		if (a > b)
+			a = a - b;
+		else
+			b = b - a;
+	}
+	return (a + b);
 }
 
-int HoanThienDau(int a[], int n)
+int TimUCLN(int a[], int n)
 {
+	int lc = a[0];
 	for (int i = 0; i < n; i++)
-		if (ktHoanThien(a[i]))
-			return a[i];
-	return -1;
+		lc = ucln(lc, a[i]);
+	return lc;
 }

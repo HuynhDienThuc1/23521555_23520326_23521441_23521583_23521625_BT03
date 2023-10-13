@@ -16,9 +16,8 @@ int main()
 	cout << "\nMang ban dau: ";
 	Xuat(b, k);
 
-	int kq = TimViTri(b, k);
-	if (kq != -1)
-		cout << "\nVi tri gia tri am lon nhat la: " << kq;
+	if (TimViTri(b, k) != -1)
+		cout << "\nVi tri gia tri am lon nhat la: " << TimViTri(b, k);
 	else
 		cout << "\nKhong co gia tri am.";
 	return 0;

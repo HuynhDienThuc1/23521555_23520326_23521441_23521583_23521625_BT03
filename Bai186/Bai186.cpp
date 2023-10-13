@@ -1,37 +1,43 @@
 #include <iostream>
 #include <iomanip>
-void nhap(int[], int&);
-void xuat(int[], int);
-void TimCon(int[], int, int);
+void Nhap(int[], int&);
+void Xuat(int[], int);
+void TimCon(int[], int, int, int&);
 using namespace std;
 
 int main()
 {
-	int n, a[100];
-	nhap(a, n);
-	xuat(a, n);
+	int b[100];
+	int k, fl;
+	Nhap(b, k);
+
+	cout << "\nXuat mang mot chieu: " << endl;
+	Xuat(b, k);
+
+	for (int i = 1; i <= k - 1; i++)
+		TimCon(b, k, i, fl);
+	if (fl != 1)
+		cout << "\nKhong co mang nao thoa dieu kien";
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
 
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
-	cout << "nhap so luong chu so cua mang:";
+	cout << "Nhap n: ";
 	cin >> n;
+	srand(time(NULL));
 	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+		a[i] = rand() % (200 + 1) - 100;
 }
 
-void xuat(int a[], int n)
+void Xuat(int a[], int n)
 {
-	cout << "mang thoa dieu kien la:";
-	for (int i = 1; i <= n; i++)
-		TimCon(a, n, i);
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
-void TimCon(int a[], int n, int i)
+void TimCon(int a[], int n, int i, int& flag)
 {
 	for (int j = 0; j <= n - i; j++)
 	{
@@ -44,10 +50,12 @@ void TimCon(int a[], int n, int i)
 		}
 		if (s == 100)
 		{
+			flag = 1;
+			cout << "\nMang thoa dieu kien: " << endl;
 			vt = 0;
 			while (vt < i)
 			{
-				cout << setw(4) << a[j + vt];
+				cout << setw(10) << a[j + vt];
 				vt++;
 			}
 			cout << endl;

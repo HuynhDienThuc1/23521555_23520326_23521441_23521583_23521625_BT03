@@ -20,7 +20,7 @@ void nhap(float a[], int& n)
 {
 	cout << "Nhap so luong phan tu cua mang: ";
 	cin >> n;
-	cout << "Nhap cac phan tu cua mang:\n";
+	cout << "Nhap cac phan tu cua mang: ";
 	for (int i = 0; i < n; i++)
 	{
 		cout << "a[" << i << "]: ";

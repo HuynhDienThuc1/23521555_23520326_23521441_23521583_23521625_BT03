@@ -1,11 +1,11 @@
-#include <iostream>
-#include <iomanip>
+#include<iostream>
+#include<iomanip>
+#include<cmath>
 using namespace std;
 
 void Nhap(int[], int&);
 void Xuat(int[], int);
-bool ktHoanThien(int);
-int HoanThienDau(int[], int);
+int ChanCuoiCung(int[], int);
 
 int main()
 {
@@ -16,7 +16,10 @@ int main()
 	cout << "\nMang ban dau: ";
 	Xuat(b, k);
 
-	cout << "\nSo hoan thien dau tien la " << HoanThienDau(b, k);
+	if (ChanCuoiCung(b, k) != -1)
+		cout << "\nGia tri chan cuoi cung:" << ChanCuoiCung(b, k);
+	else
+		cout << "\nKhong co gia tri chan cuoi";
 	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
@@ -36,21 +39,10 @@ void Xuat(int a[], int n)
 		cout << setw(10) << a[i];
 }
 
-bool ktHoanThien( int n)
+int ChanCuoiCung(int a[], int n)
 {
-	int s = 0;
-	for (int i = 1; i < n; i++)
-		if (n % i == 0)
-			s = s + i;
-	if (s == n)
-		return true;
-	return false;
-}
-
-int HoanThienDau(int a[], int n)
-{
-	for (int i = 0; i < n; i++)
-		if (ktHoanThien(a[i]))
+	for (int i = n - 1;i >= 0;i--)
+		if (a[i] % 2 == 0)
 			return a[i];
 	return -1;
 }

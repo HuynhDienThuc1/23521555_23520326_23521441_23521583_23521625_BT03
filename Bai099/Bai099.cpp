@@ -4,9 +4,10 @@ using namespace std;
 
 void Nhap(float[], int&);
 void Xuat(float[], int);
-float LonNhat(float[], int);
-float NhoNhat(float[], int);
-void TimDoan(float[], int, float&, float&);
+int ViTriDau(float[], int);
+int TimViTri(float[], int);
+
+
 
 int main()
 {
@@ -17,8 +18,7 @@ int main()
 	cout << "\nMang ban dau: ";
 	Xuat(b, k);
 
-	float x, y;
-	TimDoan(b, k, x, y);
+	cout << "\n Vi tri thoa man dieu kien: " << TimViTri(b, k);
 	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
@@ -29,7 +29,7 @@ void Nhap(float a[], int& n)
 	cin >> n;
 	srand(time(NULL));
 	for (int i = 0; i <= (n - 1); i++)
-		a[i] = -100 + rand() / ((float)RAND_MAX / 200);
+		a[i] = -100 + (rand() / (RAND_MAX / (100.0 - (-100.0))));
 }
 
 void Xuat(float a[], int n)
@@ -38,27 +38,21 @@ void Xuat(float a[], int n)
 		cout << fixed << setw(10) << setprecision(3) << a[i];
 }
 
-float LonNhat(float a[], int n)
+int ViTriDau(float a[], int n)
 {
-	float lc = a[0];
 	for (int i = 0; i < n; i++)
-		if (a[i] > lc)
-			lc = a[i];
-	return lc;
+		if (a[i] > 0)
+			return i;
+	return -1;
 }
 
-float NhoNhat(float a[], int n)
+int TimViTri(float a[], int n)
 {
-	int lc = a[0];
+	int lc = ViTriDau(a, n);
+	if (lc == -1)
+		return -1;
 	for (int i = 0; i < n; i++)
-		if (a[i] < lc)
-			lc = a[i];
+		if (a[i] > 0 && a[i] < a[lc])
+			lc = i;
 	return lc;
-}
-
-void TimDoan(float a[], int n, float& x, float& y)
-{
-	x = NhoNhat(a, n);
-	y = LonNhat(a, n);
-	cout << "\nKhoang gia tri thoa man dieu kien la: " << "[" << x << ", " << y << "]";
 }

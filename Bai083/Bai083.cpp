@@ -4,8 +4,7 @@ using namespace std;
 
 void Nhap(int[], int&);
 void Xuat(int[], int);
-int DemChan(int[], int);
-
+int DauTien(int[], int, int, int);
 int main()
 {
 	int a[500], n;
@@ -13,8 +12,8 @@ int main()
 
 	cout << "\nXuat mang mot chieu: ";
 	Xuat(a, n);
-	cout << "\nNhung gia tri chan: ";
-	DemChan(a, n);
+	cout << "\nNhung gia tri dau tien xuat hien trong khoang: ";
+	DauTien(a, n);
 
 	return 0;
 }
@@ -34,11 +33,10 @@ void Xuat(int a[], int n)
 	for (int i = 0; i <= n - 1; i++)
 		cout << setw(10) << a[i];
 }
-int DemChan(int a[], int n)
+int DauTien(int a[], int n, int x, int y)
 {
-	int dem = 0;
 	for (int i = 0; i < n; i++)
-		if (a[i] > 0 && a[i] % 2 == 0)
-			dem++;
-	return dem;
+		if (a[i] > x && a[i] < y)
+			return a[i];
+	return x;
 }

@@ -1,29 +1,39 @@
 #include <iostream>
 #include <iomanip>
-void nhap(int[], int&);
+using namespace std;
+
+void Nhap(int[], int&);
+void Xuat(int[], int);
 int ucln(int, int);
 int bcnn(int, int);
 int TimBCNN(int[], int);
-using namespace std;
 
 int main()
 {
-	int n;
-	int a[100];
-	nhap(a, n);
-	cout << "Boi chung nho nhat cua mang la:" << TimBCNN(a, n);
+	int b[100];
+	int k;
+	Nhap(b, k);
+
+	cout << "\nXuat mang mot chieu: " << endl;
+	Xuat(b, k);
+
+	cout << "\nBoi chung nho nhat cua cac gia tri trong mang: " << TimBCNN(b, k);
+	cout << "\n\n\nKet thuc!!!";
 	return 0;
 }
-
-void nhap(int a[], int& n)
+void Nhap(int a[], int& n)
 {
-	cout << "nhap so luong chu so cua mang:";
+	cout << "Nhap n: ";
 	cin >> n;
+	srand(time(NULL));
 	for (int i = 0; i <= n - 1; i++)
-	{
-		cout << "a[" << i << "]:";
-		cin >> a[i];
-	}
+		a[i] = rand() % (200 + 1) - 100;
+}
+
+void Xuat(int a[], int n)
+{
+	for (int i = 0; i <= n - 1; i++)
+		cout << setw(10) << a[i];
 }
 
 int ucln(int a, int b)

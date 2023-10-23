@@ -66,7 +66,7 @@ void ConLonNhat(float a[], int n, int& vtd, int& vtc)
 void XuatCon(float a[], int n, int vt, int l)
 {
 	for (int i = 0; i <= l - 1; i++)
-		cout << setw(8) << a[vt + i];
+		cout << setw(10) << a[vt + i];
 }
 
 void XuatCon(float a[], int n, int l)
